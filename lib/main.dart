@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:my_note/networking/models/note_model.dart';
+import 'package:my_note/injection.dart' as injection;
 import 'package:my_note/routes/app_route.dart';
 import 'package:my_note/routes/route_name.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(NoteAdapter());
-  await Hive.openBox<Note>('note_storage');
+
+  injection.init();
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemStatusBarContrastEnforced: true,
+    systemNavigationBarColor: Colors.transparent,
+    systemNavigationBarDividerColor: Colors.transparent,
+  ));
+
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,
+      overlays: [SystemUiOverlay.top]);
   runApp(const MyApp());
 }
 
