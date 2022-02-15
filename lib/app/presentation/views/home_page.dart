@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        key: const ValueKey('home_appbar'),
         elevation: 0,
         title: const Text('Note App'),
         centerTitle: true,
@@ -33,11 +34,13 @@ class _HomePageState extends State<HomePage>
           controller: tabController,
           tabs: const [
             Tab(
+              key: ValueKey('note_tab'),
               child: Text(
                 'Note',
               ),
             ),
             Tab(
+              key: ValueKey('saved_note_tab'),
               child: Text(
                 'Saved',
               ),

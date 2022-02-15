@@ -140,6 +140,7 @@ class NetworkNotePage extends GetView<NetworkNoteController> {
                 );
               }
               return const Center(
+                key: ValueKey('empty_note'),
                 child: Text(
                   'Empty Notes',
                   style: TextStyle(

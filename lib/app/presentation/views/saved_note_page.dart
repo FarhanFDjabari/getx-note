@@ -126,6 +126,7 @@ class SavedNotePage extends GetView<SavedNoteController> {
             );
           }
           return const Center(
+            key: ValueKey('empty_saved_note'),
             child: Text(
               'Empty Notes',
               style: TextStyle(
